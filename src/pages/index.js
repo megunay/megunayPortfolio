@@ -33,8 +33,8 @@ export default function About() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <nav className="bg-gray-900 p-6 text-white fixed left-0 top-0 h-full flex flex-col items-center space-y-6">
-        <h1 className="text-xl font-bold">My Portfolio</h1>
+      <nav className="bg-black p-6 text-white fixed left-0 top-0 h-full flex flex-col items-center space-y-6">
+        <h1 className="text-xl font-bold">meGunay</h1>
         <div className="flex flex-col space-y-4">
           <a href="#home" onClick={(e) => smoothScroll(e, '#home')} className={`relative group flex flex-col items-center px-4 py-2 rounded-lg ${activeSection === 'home' ? 'bg-blue-400 text-white' : 'text-gray-300'}`}>
             <Home size={24} />
@@ -56,28 +56,29 @@ export default function About() {
       </nav>
 
       <div className="ml-20 w-full">
-        <section id="home" className="h-screen flex items-center justify-center bg-gray-100">
+        <section id="home" className="h-screen flex items-center justify-center bg-black">
           <div className="text-center">
-            <h1 className="text-5xl font-bold">Hello, I'm [Your Name]</h1>
+            <p className="text-green-500 text-left">Hello! My name is,</p>
+            <h1 className="text-7xl font-bold">Musteba Erkan GUNAY</h1>
             <p className="text-xl mt-4">A Full-Stack Developer specializing in Node.js & Next.js</p>
           </div>
         </section>
 
-        <section id="about" className="h-screen flex items-center justify-center bg-white">
+        <section id="about" className="h-screen flex items-center justify-center bg-black">
           <div className="text-center px-10 md:px-40">
             <h2 className="text-4xl font-bold">About Me</h2>
-            <p className="text-lg mt-4">Hi, I'm [Your Name], a passionate Full-Stack Developer specializing in modern web technologies like Node.js and Next.js.</p>
+            <p className="text-lg mt-4">Hi, I'm Erkan, a passionate Full-Stack Developer specializing in modern web technologies like Node.js and Next.js.</p>
           </div>
         </section>
 
-        <section id="projects" className="h-screen flex items-center justify-center bg-gray-100">
+        <section id="projects" className="h-screen flex items-center justify-center bg-black">
           <div className="text-center px-10">
             <h2 className="text-4xl font-bold">Projects</h2>
             <p className="text-lg mt-4">Here are some of my recent projects...</p>
           </div>
         </section>
 
-        <section id="contact" className="h-screen flex items-center justify-center bg-white">
+        <section id="contact" className="h-screen flex items-center justify-center bg-black">
           <div className="text-center px-10">
             <h2 className="text-4xl font-bold">Contact Me</h2>
             <p className="text-lg mt-4">Feel free to reach out via email or LinkedIn.</p>
