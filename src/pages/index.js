@@ -4,6 +4,7 @@ import Typewriter from 'typewriter-effect';
 import { Home, User, Briefcase, Mail, Wrench } from 'lucide-react';
 import { Html5, Css3, Vue, Javascript } from "lucide-react"; // Lucide Icons
 import "devicon/devicon.min.css"; // Import Devicon CSS
+import Contact from "@/components/contact";
 
 const frontend = [
   { name: "HTML", icon: "devicon-html5-plain colored" },
@@ -64,6 +65,7 @@ export default function About() {
         <title>My Portfolio</title>
         <meta name="description" content="Full-Stack Developer Portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>{`html, body { overflow-x: hidden; background: black }`}</style>
       </Head>
 
       <nav className="bg-black p-6 text-white fixed left-0 top-0 h-full flex flex-col items-center space-y-6">
@@ -92,7 +94,7 @@ export default function About() {
         </div>
       </nav>
 
-      <div className="ml-20 w-full">
+      <div className="ml-[80px] w-[calc(100%-80px)] w-full">
         <section id="home" className="h-screen flex items-center justify-center bg-black">
           <div className="text-center">
             <p className="text-green-500 text-left">Hello! My name is,</p>
@@ -152,10 +154,11 @@ export default function About() {
         </section>
 
 
-        <section id="skills" className="ml-20 w-full flex flex-col bg-black">
+        <section id="skills" className="w-full flex flex-col bg-black px-10">
           <h2 className="text-4xl font-bold text-center text-slate-400">Skills</h2>
-          <div className="text-left ml-20">
-            <h2 className="text-2xl font-bold mb-6 pt-10 text-slate-400 border-b border-gray-600 w-full pb-2">Front-end</h2>
+
+          <div className="text-left w-full">
+            <h2 className="text-2xl font-bold mb-6 ml-10 pt-10 text-slate-400 border-b border-gray-600 pb-2">Front-end</h2>
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
               {frontend.map((skill, index) => (
                 <div key={index} className="flex flex-col items-center text-white">
@@ -165,8 +168,9 @@ export default function About() {
               ))}
             </div>
           </div>
-          <div className="text-left ml-20">
-            <h2 className="text-2xl font-bold mb-6 pt-10 text-slate-400 border-b border-gray-600 w-full pb-2">Back-end</h2>
+
+          <div className="text-left w-full">
+            <h2 className="text-2xl font-bold mb-6 ml-10 pt-10 text-slate-400 border-b border-gray-600 pb-2">Back-end</h2>
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
               {backend.map((skill, index) => (
                 <div key={index} className="flex flex-col items-center text-white">
@@ -176,8 +180,9 @@ export default function About() {
               ))}
             </div>
           </div>
-          <div className="text-left ml-20">
-            <h2 className="text-2xl font-bold mb-6 pt-10 text-slate-400 border-b border-gray-600 w-full pb-2">Database</h2>
+
+          <div className="text-left w-full">
+            <h2 className="text-2xl font-bold mb-6 ml-10 pt-10 text-slate-400 border-b border-gray-600 pb-2">Database</h2>
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
               {database.map((skill, index) => (
                 <div key={index} className="flex flex-col items-center text-white">
@@ -187,13 +192,14 @@ export default function About() {
               ))}
             </div>
           </div>
-          <div className="text-left ml-20">
-            <h2 className="text-2xl font-bold mb-6 pt-10 text-slate-400 border-b border-gray-600 w-full pb-2">Ops</h2>
+
+          <div className="text-left w-full">
+            <h2 className="text-2xl font-bold mb-6 ml-10 pt-10 text-slate-400 border-b border-gray-600 pb-2">Ops</h2>
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
               {ops.map((skill, index) => (
                 <div key={index} className="flex flex-col items-center text-white">
                   <i className={`${skill.icon} text-3xl`}></i>
-                  <span className="text-lg font-medium">{skill.name}</span>
+                  <span className="mt-2 text-lg font-medium">{skill.name}</span>
                 </div>
               ))}
             </div>
@@ -208,9 +214,10 @@ export default function About() {
         </section>
 
         <section id="contact" className="h-screen flex items-center justify-center bg-black">
-          <div className="text-center px-10">
+          <div className="text-center px-10 bg-black">
             <h2 className="text-4xl font-bold">Contact Me</h2>
-            <p className="text-lg mt-4">Feel free to reach out via email or LinkedIn.</p>
+            <Contact />
+            <p className="text-.5xltext-lg mt-1">Made by M. E. Gunay</p>
           </div>
         </section>
       </div>
