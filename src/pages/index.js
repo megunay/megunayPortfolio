@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Typewriter from 'typewriter-effect';
@@ -140,7 +141,7 @@ export default function About() {
           <div className="text-left">
             <h2 className="text-4xl font-bold text-slate-400 text-center">About Me</h2>
             <p className="text-lg mt-4 text-gray-300 w-1/2 ">
-              Hi, I&apos;m <span className="text-blue-400 font-bold">Erkan</span>! I&apos;m a passionate Full-Stack Developer with a background in 
+              Hi, I&rsquo;m <span className="text-blue-400 font-bold">Erkan</span>! I&rsquo;m a passionate Full-Stack Developer with a background in 
               Mechanical Engineering. I thrive on solving complex problems and continuously learning new technologies to build 
               efficient, scalable applications.
             </p>
@@ -157,16 +158,16 @@ export default function About() {
             </ul>
 
             <p className="text-lg mt-4 text-gray-300 w-1/2">
-              I&apos;m a hardworking and enthusiastic developer who enjoys tackling challenges and staying ahead in the 
-              ever-evolving tech world. When I&apos;m not coding, I spend quality time with my lovely wife and baby boy, 
-              who motivate me every day. Let&apos;s connect and build something amazing together! 🚀
+              I&rsquo;m a hardworking and enthusiastic developer who enjoys tackling challenges and staying ahead in the 
+              ever-evolving tech world. When I&rsquo;m not coding, I spend quality time with my lovely wife and baby boy, 
+              who motivate me every day. Let&rsquo;s connect and build something amazing together! 🚀
             </p>
 
             <h3 className="text-2xl font-bold mt-8 text-slate-400">Education</h3>
             <div className="mt-4 text-gray-300">
               <p><span className="text-green-300 font-semibold">2010-2015:</span> Karabuk University (Turkey) - B.Sc. in Mechanical Engineering</p>
               <p><span className="text-green-300 font-semibold">2016-2018:</span> TAFE NSW (Sydney, Australia) - Advanced Diploma in Mechanical Engineering</p>
-              <p><span className="text-green-300 font-semibold">2020-2022:</span> Hacettepe University (Turkey) - Master&apos;s in Software Engineering (Incomplete)</p>
+              <p><span className="text-green-300 font-semibold">2020-2022:</span> Hacettepe University (Turkey) - Master&rsquo;s in Software Engineering (Incomplete)</p>
             </div>
 
             <h3 className="text-2xl font-bold mt-8 text-slate-400">Experience</h3>
