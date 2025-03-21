@@ -119,7 +119,7 @@ export default function About() {
         <section id="about" className="min-h-screen flex flex-col justify-center bg-black text-white px-10 md:px-40">
           <div className="text-left">
             <h2 className="text-4xl font-bold text-slate-400 text-center">About Me</h2>
-            <p className="text-lg mt-4 text-gray-300 w-1/2 ">
+            <p className="text-lg mt-4 text-gray-300 w-full md:w-3/4 lg:w-1/2 ">
               Hi, I&rsquo;m <span className="text-blue-400 font-bold">Erkan</span>! I&rsquo;m a passionate Full-Stack Developer with a background in 
               Mechanical Engineering. I thrive on solving complex problems and continuously learning new technologies to build 
               efficient, scalable applications.
