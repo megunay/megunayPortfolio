@@ -2,10 +2,11 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Typewriter from 'typewriter-effect';
-import { Home, User, Briefcase, Mail, Wrench } from 'lucide-react';
+import { Home, User, Briefcase, Mail, Wrench, Menu } from 'lucide-react';
 //import { Html5, Css3, Vue, Javascript } from "lucide-react"; // Lucide Icons   Bunlar kullanilmiyor kaldiracagim sorun cikarmazsa
 import "devicon/devicon.min.css"; // Import Devicon CSS
 import Contact from "@/components/Contact";
+import Navbar from "@/components/Navbar";
 import Image from "next/image";
 
 const frontend = [
@@ -62,6 +63,8 @@ const projects = [
 ];
 
 
+
+
 export default function About() {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -94,31 +97,7 @@ export default function About() {
         <style>{`html, body { overflow-x: hidden; background: black }`}</style>
       </Head>
 
-      <nav className="bg-black p-6 text-white fixed left-0 top-0 h-full flex flex-col items-center space-y-6">
-        <h1 className="text-xl font-bold">meGunay</h1>
-        <div className="flex flex-col space-y-4">
-          <a href="#home" onClick={(e) => smoothScroll(e, '#home')} className={`relative group flex flex-col items-center px-4 py-2 rounded-lg ${activeSection === 'home' ? 'bg-blue-400 text-white' : 'text-gray-300'}`}>
-            <Home size={24} />
-            <span className="absolute left-12 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-xs rounded py-1 px-2 transition-opacity">Home</span>
-          </a>
-          <a href="#about" onClick={(e) => smoothScroll(e, '#about')} className={`relative group flex flex-col items-center px-4 py-2 rounded-lg ${activeSection === 'about' ? 'bg-blue-400 text-white' : 'text-gray-300'}`}>
-            <User size={24} />
-            <span className="absolute left-12 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-xs rounded py-1 px-2 transition-opacity">About</span>
-          </a>
-          <a href="#skills" onClick={(e) => smoothScroll(e, '#skills')} className={`relative group flex flex-col items-center px-4 py-2 rounded-lg ${activeSection === 'skills' ? 'bg-blue-400 text-white' : 'text-gray-300'}`}>
-            <Wrench size={24} />
-            <span className="absolute left-12 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-xs rounded py-1 px-2 transition-opacity">Skills</span>
-          </a>
-          <a href="#projects" onClick={(e) => smoothScroll(e, '#projects')} className={`relative group flex flex-col items-center px-4 py-2 rounded-lg ${activeSection === 'projects' ? 'bg-blue-400 text-white' : 'text-gray-300'}`}>
-            <Briefcase size={24} />
-            <span className="absolute left-12 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-xs rounded py-1 px-2 transition-opacity">Projects</span>
-          </a>
-          <a href="#contact" onClick={(e) => smoothScroll(e, '#contact')} className={`relative group flex flex-col items-center px-4 py-2 rounded-lg ${activeSection === 'contact' ? 'bg-blue-400 text-white' : 'text-gray-300'}`}>
-            <Mail size={24} />
-            <span className="absolute left-12 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-xs rounded py-1 px-2 transition-opacity">Contact</span>
-          </a>
-        </div>
-      </nav>
+      <Navbar />
 
       <div className="ml-[80px] w-[calc(100%-80px)]">
         <section id="home" className="h-screen flex items-center justify-center bg-black">
@@ -234,9 +213,9 @@ export default function About() {
 
         <section id="projects" className="min-h-screen text-white py-20 px-10 md:px-40">
           <h2 className="text-4xl font-bold text-center text-slate-400 mb-10">My Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-4">
             {projects.map((project) => (
-              <div key={project.id} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+              <div key={project.id} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full sm:w-1/2 lg:w-1/3 p-4">
                 <Image 
                   src={project.image} 
                   alt={project.title} 
