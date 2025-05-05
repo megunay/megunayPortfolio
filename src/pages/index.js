@@ -2,11 +2,11 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Typewriter from 'typewriter-effect';
-import { Home, User, Briefcase, Mail, Wrench, Menu } from 'lucide-react';
-//import { Html5, Css3, Vue, Javascript } from "lucide-react"; // Lucide Icons   Bunlar kullanilmiyor kaldiracagim sorun cikarmazsa
-import "devicon/devicon.min.css"; // Import Devicon CSS
+import "devicon/devicon.min.css";
 import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
 import Image from "next/image";
 
 const frontend = [
@@ -43,7 +43,7 @@ const projects = [
     id: 1,
     title: "Project One",
     description: "This is a placeholder description for Project One. Replace it with real details later.",
-    image: "/images/placeholder.png", // Replace with real images later
+    image: "/images/placeholder.png",
     github: "https://github.com/yourusername/project-one"
   },
   {
@@ -62,21 +62,22 @@ const projects = [
   }
 ];
 
-
-
-
-export default function About() {
+export default function HomePage() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollY = window.scrollY;
       const sections = document.querySelectorAll('section');
+      let current = 'home';
       sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
-          setActiveSection(section.id);
+        const offsetTop = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollY >= offsetTop - height / 2) {
+          current = section.id;
         }
       });
+      setActiveSection(current);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -97,141 +98,123 @@ export default function About() {
         <style>{`html, body { overflow-x: hidden; background: black }`}</style>
       </Head>
 
-      <Navbar />
+      <Navbar activeSection={activeSection} onNavClick={smoothScroll} />
 
       <div className="ml-[80px] w-[calc(100%-80px)]">
+        {/* Home Section */}
         <section id="home" className="h-screen flex items-center justify-center bg-black">
           <div className="text-center">
             <p className="text-green-500 text-left">Hello! My name is,</p>
             <h1 className="text-7xl font-bold">Musteba Erkan GUNAY</h1>
             <div className="text-3xl font-bold text-green-500">
-            <Typewriter
-              options={{
-              strings: ['Hello!!', "I'm a Full-Stack Developer.","I create accessible, user friendly websites."],
-              autoStart: true,
-              loop: true,
-              }}
-            />
+              <Typewriter
+                options={{
+                  strings: ['Hello!!', "I'm a Full-Stack Developer.", "I create accessible, user friendly websites."],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
             </div>
           </div>
         </section>
 
-        <section id="about" className="min-h-screen flex flex-col justify-center bg-black text-white px-10 md:px-40">
-          <div className="text-left">
-            <h2 className="text-4xl font-bold text-slate-400 text-center">About Me</h2>
-            <p className="text-lg mt-4 text-gray-300 w-full md:w-3/4 lg:w-1/2 ">
-              Hi, I&rsquo;m <span className="text-blue-400 font-bold">Erkan</span>! I&rsquo;m a passionate Full-Stack Developer with a background in 
-              Mechanical Engineering. I thrive on solving complex problems and continuously learning new technologies to build 
-              efficient, scalable applications.
+        {/* About Section */}
+        <section id="about" className="min-h-screen flex flex-col justify-center bg-black text-white px-10 md:px-40 pt-20">
+          <h2 className="text-4xl font-bold text-center text-slate-400 mb-10">About Me</h2>
+          <div className="max-w-4xl mx-auto text-lg leading-8">
+            <p className="mb-6">
+              Hello! I'm <span className="text-green-400 font-semibold">Musteba Erkan GUNAY</span>, a passionate and dedicated <span className="text-green-400">Full-Stack Web Developer</span> with a background in Mechanical Engineering.
             </p>
-
-            <p className="text-lg mt-4 text-gray-300">
-              I specialize in modern web technologies, including:
+            <p className="mb-6">
+              I enjoy building web applications that are fast, accessible, and user-friendly. My current focus is mastering technologies like <span className="text-green-400">Vue.js, Next.js, Node.js</span>, and modern backend systems such as <span className="text-green-400">MongoDB</span> and <span className="text-green-400">PostgreSQL</span>.
             </p>
-
-            <ul className="text-gray-300 mt-4 space-y-2">
-              <li><span className="text-blue-400 font-semibold">Frontend:</span> HTML, CSS, Tailwind, Vue.js, Next.js, JavaScript</li>
-              <li><span className="text-green-400 font-semibold">Backend:</span> Python, Node.js, Express.js, Flask</li>
-              <li><span className="text-yellow-400 font-semibold">Database:</span> MongoDB, PostgreSQL, MySQL</li>
-              <li><span className="text-red-400 font-semibold">Ops:</span> Git, Docker, AWS, Vercel</li>
-            </ul>
-
-            <p className="text-lg mt-4 text-gray-300 w-1/2">
-              I&rsquo;m a hardworking and enthusiastic developer who enjoys tackling challenges and staying ahead in the 
-              ever-evolving tech world. When I&rsquo;m not coding, I spend quality time with my lovely wife and baby boy, 
-              who motivate me every day. Let&rsquo;s connect and build something amazing together! 🚀
+            <p className="mb-6">
+              I'm a fast learner who loves exploring new tools, frameworks, and best practices. With hands-on experience in both frontend and backend development, I strive to create seamless and responsive digital experiences.
             </p>
+            <p>
+              Outside of coding, I'm a husband and a proud father. My long-term goal is to build impactful digital products and eventually establish my own game development studio.
+            </p>
+          </div>
+        </section>
 
-            <h3 className="text-2xl font-bold mt-8 text-slate-400">Education</h3>
-            <div className="mt-4 text-gray-300">
-              <p><span className="text-green-300 font-semibold">2010-2015:</span> Karabuk University (Turkey) - B.Sc. in Mechanical Engineering</p>
-              <p><span className="text-green-300 font-semibold">2016-2018:</span> TAFE NSW (Sydney, Australia) - Advanced Diploma in Mechanical Engineering</p>
-              <p><span className="text-green-300 font-semibold">2020-2022:</span> Hacettepe University (Turkey) - Master&rsquo;s in Software Engineering (Incomplete)</p>
+
+        {/* Skills Section */}
+        <section id="skills" className="min-h-screen flex flex-col justify-center bg-black text-white px-10 md:px-40 pt-20">
+          <h2 className="text-4xl font-bold text-center text-slate-400 mb-10">My Skills</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Frontend Skills */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-green-400">Frontend</h3>
+              <div className="flex flex-wrap gap-4">
+                {frontend.map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-2 bg-gray-800 p-2 rounded shadow">
+                    <i className={`${skill.icon} text-2xl`}></i>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <h3 className="text-2xl font-bold mt-8 text-slate-400">Experience</h3>
-            <div className="mt-4 text-gray-300">
-              <p><span className="text-green-300 font-semibold">2020-2021:</span> GUN-KA Machinery (Turkey) - Production Engineer</p>
-              <p><span className="text-green-300 font-semibold">2021-2023:</span> GUN-KA Machinery (Turkey) - Production Manager</p>
-              <p><span className="text-green-300 font-semibold">2023-:</span> Archimedes Schools (Vietnam) - STEM Teacher</p>
+            {/* Backend Skills */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-green-400">Backend</h3>
+              <div className="flex flex-wrap gap-4">
+                {backend.map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-2 bg-gray-800 p-2 rounded shadow">
+                    <i className={`${skill.icon} text-2xl`}></i>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Database Skills */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-green-400">Database</h3>
+              <div className="flex flex-wrap gap-4">
+                {database.map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-2 bg-gray-800 p-2 rounded shadow">
+                    <i className={`${skill.icon} text-2xl`}></i>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* DevOps Skills */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-green-400">DevOps & Tools</h3>
+              <div className="flex flex-wrap gap-4">
+                {ops.map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-2 bg-gray-800 p-2 rounded shadow">
+                    <i className={`${skill.icon} text-2xl`}></i>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
 
-        <section id="skills" className="min-h-screen flex flex-col justify-center bg-black text-white px-10 md:px-40">
-          <h2 className="text-4xl font-bold text-center text-slate-400">Skills</h2>
-
-          <div className="text-left w-full">
-            <h2 className="text-2xl font-bold mb-6 ml-10 pt-10 text-slate-400 border-b border-gray-600 pb-2">Front-end</h2>
-            <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-              {frontend.map((skill, index) => (
-                <div key={index} className="flex flex-col items-center text-white">
-                  <i className={`${skill.icon} text-3xl`}></i>
-                  <span className="mt-2 text-lg font-medium">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="text-left w-full">
-            <h2 className="text-2xl font-bold mb-6 ml-10 pt-10 text-slate-400 border-b border-gray-600 pb-2">Back-end</h2>
-            <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-              {backend.map((skill, index) => (
-                <div key={index} className="flex flex-col items-center text-white">
-                  <i className={`${skill.icon} text-3xl`}></i>
-                  <span className="mt-2 text-lg font-medium">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="text-left w-full">
-            <h2 className="text-2xl font-bold mb-6 ml-10 pt-10 text-slate-400 border-b border-gray-600 pb-2">Database</h2>
-            <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-              {database.map((skill, index) => (
-                <div key={index} className="flex flex-col items-center text-white">
-                  <i className={`${skill.icon} text-3xl`}></i>
-                  <span className="mt-2 text-lg font-medium">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="text-left w-full">
-            <h2 className="text-2xl font-bold mb-6 ml-10 pt-10 text-slate-400 border-b border-gray-600 pb-2">Ops</h2>
-            <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-              {ops.map((skill, index) => (
-                <div key={index} className="flex flex-col items-center text-white">
-                  <i className={`${skill.icon} text-3xl`}></i>
-                  <span className="mt-2 text-lg font-medium">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        {/* Projects Section */}
         <section id="projects" className="min-h-screen text-white py-20 px-10 md:px-40">
           <h2 className="text-4xl font-bold text-center text-slate-400 mb-10">My Projects</h2>
           <div className="flex flex-wrap justify-center gap-4">
             {projects.map((project) => (
               <div key={project.id} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full sm:w-1/2 lg:w-1/3 p-4">
-                <Image 
-                  src={project.image} 
-                  alt={project.title} 
-                  width={400} 
-                  height={250} 
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={250}
                   className="w-full h-48 object-cover"
                 />
-                <div className="p-5">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition"
-                  >
+                <div className="mt-4">
+                  <h3 className="text-xl font-bold">{project.title}</h3>
+                  <p className="text-gray-300 mt-2">{project.description}</p>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-blue-400 mt-2 inline-block">
                     View on GitHub
                   </a>
                 </div>
@@ -240,11 +223,10 @@ export default function About() {
           </div>
         </section>
 
-        <section id="contact" className="h-screen flex items-center justify-center bg-black">
-          <div className="text-center px-10 bg-black">
-            <Contact />
-            <p className="text-lg mt-1">Made by M. E. Gunay</p>
-          </div>
+        {/* Contact Section */}
+        <section id="contact" className="min-h-screen bg-black text-white px-10 md:px-40 pt-20">
+          <h2 className="text-4xl font-bold text-center text-slate-400 mb-10">Contact Me</h2>
+          <Contact />
         </section>
       </div>
     </div>
